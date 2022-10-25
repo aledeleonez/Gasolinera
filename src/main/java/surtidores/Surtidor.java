@@ -25,6 +25,7 @@ public class Surtidor {
     public synchronized void soltarSurtidor(int id_c) throws InterruptedException {
         libre = true;
         System.out.println("El coche " + (id_c) + " suelta el surtidor " + (id));
+        this.notify();
     }
 
 }
