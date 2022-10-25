@@ -32,16 +32,19 @@ public class Coche extends Thread{
                     }
                     continue;
                 }
-            }catch (InterruptedException ex){
+                System.out.println("El coche " + (id+1) + "está repostando");
+                try {
+                    sleep(random.nextInt(1000) + 500);
+                } catch (InterruptedException ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                }
+
+                surtidor.soltarSurtidor(id);
+                coches.desatenderCoche(id);
+
+                }catch (InterruptedException ex){
                 System.out.println("Error: " + ex.getMessage());
             }
-            System.out.println("El coche " + (id+1) + "está repostando");
-            try {
-                sleep(random.nextInt(1000) + 500);
-            } catch (InterruptedException ex) {
-                System.out.println("Error: " + ex.getMessage());
-            }
-            surtidor.soltarSurtidor(id);
         }
     }
 }
