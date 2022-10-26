@@ -33,7 +33,7 @@ public class Coche extends Thread{
                     }
                     continue;
                 }
-                System.out.println("El coche " + (id+1) + "está repostando");
+                System.out.println("El coche " + (id) + "está repostando");
                 try {
                     sleep(random.nextInt(1000) + 500);
                 } catch (InterruptedException ex) {
@@ -42,9 +42,14 @@ public class Coche extends Thread{
 
                 surtidor.soltarSurtidor(id);
                 dependiente.desatenderCoche(id);
+                tanqueLleno = true;
+                System.out.println("El coche " + id + " tiene el tanque lleno");
 
                 }catch (InterruptedException ex){
                 System.out.println("Error: " + ex.getMessage());
+            }
+            if(tanqueLleno){
+                break;
             }
         }
     }

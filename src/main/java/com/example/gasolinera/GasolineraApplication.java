@@ -12,6 +12,7 @@ public class GasolineraApplication {
 
 	public static void main(String[] args) {
 		GasController gasController= new GasController();
+		gasController.Principal();
 	}
 
 }

@@ -1,7 +1,7 @@
 package surtidores;
 
 public class DependienteGasolinera {
-    private int coche = 49;
+    private int coche = 5;
 
     public synchronized void atenderCoche(int id_c) throws InterruptedException {
         while(coche==0){
