@@ -1,10 +1,9 @@
 package surtidores;
 
-import java.util.Random;
 
 public class Surtidor {
 
-    private Random random = new Random();
+    private int tiempoEspera = (int) (Math.random() * (130-50)+50);
     private int id;
     private boolean libre = true;
 
@@ -14,7 +13,7 @@ public class Surtidor {
 
     public synchronized boolean cogerSurtidor(int id_c) throws InterruptedException {
         while(!libre) {
-            this.wait(random.nextInt(1000) + 500);
+            this.wait(tiempoEspera);
             return false;
         }
         System.out.println("El coche " + (id_c) + " coge el surtidor " + (id));

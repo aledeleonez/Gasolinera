@@ -1,10 +1,8 @@
 package surtidores;
 
-import java.util.Random;
-
 public class Coche extends Thread{
 
-    private Random random = new Random();
+    private int tiempoEspera = (int) (Math.random() * (130-50)+50);
     private int id;
     private Surtidor surtidor;
     private DependienteGasolinera dependiente;
@@ -27,7 +25,7 @@ public class Coche extends Thread{
                     surtidor.soltarSurtidor(id);
                     dependiente.desatenderCoche(id);
                     try{
-                        Coche.sleep(random.nextInt(1000)+100);
+                        Coche.sleep(tiempoEspera);
                     }catch (InterruptedException ex){
                         System.out.println("Error: "+ex.getMessage());
                     }
@@ -35,7 +33,7 @@ public class Coche extends Thread{
                 }
                 System.out.println("El coche " + (id) + " está repostando");
                 try {
-                    sleep(random.nextInt(1000) + 500);
+                    sleep(tiempoEspera);
                 } catch (InterruptedException ex) {
                     System.out.println("Error: " + ex.getMessage());
                 }
