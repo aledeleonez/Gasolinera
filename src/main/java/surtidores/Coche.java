@@ -1,7 +1,11 @@
 package surtidores;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Coche extends Thread{
 
+    private static Logger logger = LoggerFactory.getLogger(Coche.class);
     private int tiempoEspera = (int) (Math.random() * (130-50)+50);
     private int id;
     private Surtidor surtidor;
@@ -31,7 +35,7 @@ public class Coche extends Thread{
                     }
                     continue;
                 }
-                System.out.println("El coche " + (id) + " está repostando");
+                logger.info("El coche " + id + " está repostando");
                 try {
                     sleep(tiempoEspera);
                 } catch (InterruptedException ex) {
@@ -39,7 +43,7 @@ public class Coche extends Thread{
                 }
 
                 tanqueLleno = true;
-                System.out.println("El coche " + id + " tiene el tanque lleno");
+                logger.info("El coche " + id + " ha llenado el tanque");
                 surtidor.soltarSurtidor(id);
                 dependiente.desatenderCoche(id);
 
