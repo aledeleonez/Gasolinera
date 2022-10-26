@@ -23,7 +23,7 @@ public class Coche extends Thread{
             try{
                 dependiente.atenderCoche(id);
                 surtidor.cogerSurtidor(id);
-                if (!surtidor.cogerSurtidor(id)) {
+                if (surtidor.cogerSurtidor(id)) {
                     surtidor.soltarSurtidor(id);
                     dependiente.desatenderCoche(id);
                     try{
@@ -33,17 +33,18 @@ public class Coche extends Thread{
                     }
                     continue;
                 }
-                System.out.println("El coche " + (id) + "está repostando");
+                System.out.println("El coche " + (id) + " está repostando");
                 try {
                     sleep(random.nextInt(1000) + 500);
                 } catch (InterruptedException ex) {
                     System.out.println("Error: " + ex.getMessage());
                 }
 
-                surtidor.soltarSurtidor(id);
-                dependiente.desatenderCoche(id);
                 tanqueLleno = true;
                 System.out.println("El coche " + id + " tiene el tanque lleno");
+                surtidor.soltarSurtidor(id);
+                dependiente.desatenderCoche(id);
+
 
                 }catch (InterruptedException ex){
                 System.out.println("Error: " + ex.getMessage());

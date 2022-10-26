@@ -7,13 +7,13 @@ public class DependienteGasolinera {
         while(coche==0){
             this.wait();
         }
-        System.out.println("El coche " + (id_c+1) + " es el coche " + coche);
+        System.out.println("El coche " + (id_c) + " es el coche " + coche);
         coche--;
     }
 
     public synchronized void desatenderCoche(int id_c) throws InterruptedException {
         coche++;
-        System.out.println("El coche " + (id_c+1) + " ya NO es el coche " + coche);
+        System.out.println("El coche " + (id_c) + " ya NO es el coche " + coche);
         this.notify();
     }
 }
